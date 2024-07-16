@@ -120,7 +120,7 @@ def multi_recursive(
         else:
             box = primitive.bbox(fast=fast)
 
-        if box.has_data:
+        if box.has_data and not box.is_empty:
             yield box
 
 
@@ -171,5 +171,5 @@ def multi_flat(
             if cache:
                 cache.store(entity, box)
 
-        if box.has_data:
+        if box.has_data and not box.is_empty:
             yield box
