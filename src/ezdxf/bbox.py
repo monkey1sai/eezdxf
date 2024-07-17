@@ -121,9 +121,7 @@ def multi_recursive(
             box = primitive.bbox(fast=fast)
 
         if box.has_data:
-            sx,sy,sz =box.size
-            if sx*sy != 0.0:
-                yield box
+            yield box
 
 
 def extents(
@@ -174,6 +172,4 @@ def multi_flat(
                 cache.store(entity, box)
 
         if box.has_data:
-            sx,sy,sz =box.size
-            if sx*sy != 0.0:
-                yield box
+            yield box
