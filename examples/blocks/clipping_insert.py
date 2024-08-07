@@ -3,7 +3,7 @@
 from __future__ import annotations
 import pathlib
 import ezdxf
-from ezdxf import colors, xclip
+from ezdxf import colors, xclip, bbox
 from ezdxf.document import Drawing
 
 CWD = pathlib.Path("~/Desktop/Outbox").expanduser()
@@ -75,8 +75,17 @@ def add_clipping_path_in_wcs_coordinates():
     clipper.set_wcs_clipping_path([(20, 11), (25, 14)])
 
     doc.set_modelspace_vport(height=20, center=(15, 10))
+    doc.header
     filename = CWD / "add_clipping_path_in_wcs_coordinates.dxf"
-    doc.saveas(filename)
+    # draw xclip bbox
+    msp = doc.modelspace()
+    es = list(doc.modelspace().query('*'))
+    b1 = bbox.extents([es[0]])
+    b2 = bbox.extents([es[1]])
+    msp.add_lwpolyline(b1.rect_vertices(), close=True, dxfattribs={'layer':'b1', 'color':1} )
+    msp.add_lwpolyline(b2.rect_vertices(), close=True, dxfattribs={'layer':'b2', 'color':2} )
+
+    msp.doc.saveas(filename)
     print(f"created: {filename}")
 
 
@@ -116,9 +125,9 @@ def add_inverted_clipping_path():
 
 
 def main():
-    add_clipping_path_in_block_coordinates()
+    #add_clipping_path_in_block_coordinates()
     add_clipping_path_in_wcs_coordinates()
-    add_inverted_clipping_path()
+    #add_inverted_clipping_path()
 
 
 if __name__ == "__main__":

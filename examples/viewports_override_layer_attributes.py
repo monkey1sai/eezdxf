@@ -157,8 +157,8 @@ def main():
         except IOError as e:
             print(str(e))
 
-    make("R2000")
-    make("R2007")
+    #make("R2000")
+    #make("R2007")
     make("R2018")
 
 

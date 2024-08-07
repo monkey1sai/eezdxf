@@ -22,4 +22,16 @@ def main():
 
 
 if __name__ == "__main__":
+    from ezdxf.addons.importer import Importer
+    import ezdxf
+    dimdoc = ezdxf.readfile(r'D:\._vscode2\ezdxf-sorc\examples_dxf\wipeout_door.dxf')
+    newdoc = ezdxf.new(dxfversion=dimdoc.dxfversion, setup=True)
+    imper =  Importer(dimdoc, newdoc)
+
+    dimdoc2 = ezdxf.readfile(r'D:\._vscode2\ezdxf-sorc\examples_dxf\dimension_in_nested_blocks.dxf')
+    newdoc2 = ezdxf.new(dxfversion=dimdoc.dxfversion, setup=True)
+    imper2 =  Importer(dimdoc2, newdoc2)
+
+
+    print('')
     main()

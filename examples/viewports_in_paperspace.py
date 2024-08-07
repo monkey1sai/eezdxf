@@ -58,8 +58,8 @@ def create_3d_modelspace_content(msp: Modelspace):
         (MESH_SIZE, MESH_SIZE), dxfattribs={"color": colors.MAGENTA}
     )
     build_cos_sin_mesh(mesh)
-
-
+size = (44.0, 46.5)
+center = (27.0, 25.75)
 def create_viewports(paperspace: Paperspace):
     # Define viewports in paper space:
     # center, size=(width, height) defines the viewport in paper space.
@@ -75,7 +75,7 @@ def create_viewports(paperspace: Paperspace):
         view_center_point=(7.5, 7.5),
         view_height=10,
         status=2,
-    )
+    ) 
     # scale is calculated by:
     # height of model space (view_height=10) / height of viewport (height=5)
     paperspace.add_text(

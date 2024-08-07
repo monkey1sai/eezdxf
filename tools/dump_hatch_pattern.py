@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 import ezdxf
 
-
+from ezdxf import bbox
 def main(filename):
     doc = ezdxf.readfile(filename)
     msp = doc.modelspace()
